@@ -14,10 +14,10 @@ import { wrap } from "framer-motion";
 
 interface Props {
   onSelect: (genre: Genre) => void;
-  selectedGenre: Genre | null;
+  selectedGenreId?: number;
 }
 
-const GenreList = ({ onSelect, selectedGenre }: Props) => {
+const GenreList = ({ onSelect, selectedGenreId }: Props) => {
   const { data, isLoading, error } = useGenres();
 
   if (error) return null;
@@ -43,7 +43,7 @@ const GenreList = ({ onSelect, selectedGenre }: Props) => {
                 onClick={() => onSelect(genre)}
                 fontSize="lg"
                 variant="link"
-                fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
+                fontWeight={genre.id === selectedGenreId ? "bold" : "normal"}
                 whiteSpace="normal"
                 textAlign="left"
               >
